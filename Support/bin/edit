@@ -1,0 +1,15 @@
+#!/bin/sh
+
+##
+# edit: backend script of the MailMate emacsclient bundle, modified
+# from the MacVim bundle, original author: O'Shaughnessy Evans
+# <shaug+mailmate@wumpus.org>
+##
+
+PATH=$HOME/bin:~/Applications/Emacs.app/Contents/MacOS/bin:/Applications/Emacs.app/Contents/MacOS/bin:/usr/local/bin:$PATH
+
+hash emacsclient 2>/dev/null && VISUAL=emacsclient || VISUAL=emacsclient
+
+open -g -a Marked "$MM_EDIT_FILEPATH" 2>/dev/null
+$VISUAL +$MM_LINE_NUMBER "$MM_EDIT_FILEPATH"
+osascript -e 'tell app "MailMate" to activate'
